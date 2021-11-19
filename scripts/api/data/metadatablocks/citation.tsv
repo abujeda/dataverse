@@ -1,7 +1,7 @@
 #metadataBlock	name	dataverseAlias	displayName	blockURI											
 	citation		Citation Metadata	https://dataverse.org/schema/citation/											
 #datasetField	name	title	description	watermark	 fieldType	displayOrder	displayFormat	advancedSearchField	allowControlledVocabulary	allowmultiples	facetable	displayoncreate	required	parent	metadatablock_id	termURI
-	title	Title	Full title by which the Dataset is known.	Enter title...	text	0		TRUE	FALSE	FALSE	FALSE	TRUE	TRUE		citation	http://purl.org/dc/terms/title
+	title	Title		Enter title...	text	0		TRUE	FALSE	FALSE	FALSE	TRUE	TRUE		citation	http://purl.org/dc/terms/title
 	subtitle	Subtitle	A secondary title that amplifies or states certain limitations on the main title		text	1		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation
 	alternativeTitle	Alternative Title	Either 1) a title commonly used to refer to this Dataset or 2) an abbreviation of the main title		text	2		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/alternative
 	alternativeURL	Alternative URL	A URL where the dataset can be viewed, such as a personal or project website.  	Enter full URL, starting with http://	url	3	<a href="#VALUE" target="_blank">#VALUE</a>	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	https://schema.org/distribution
