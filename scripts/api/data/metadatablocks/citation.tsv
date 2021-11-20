@@ -18,7 +18,7 @@
 	datasetContactAffiliation	Affiliation	The organization affiliated with the contact	Organization XYZ	text	14	(#VALUE)	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	datasetContact	citation	
 	datasetContactEmail	E-mail	Contact's email address. This will not be displayed on the dataset page.	name@email.xyz	email	15	#EMAIL	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	datasetContact	citation	
 	dsDescription	Description	Summary of this Dataset's purpose, nature, and scope		none	16		FALSE	FALSE	TRUE	FALSE	TRUE	TRUE		citation	
-	dsDescriptionValue	No title			textbox	17	#VALUE	TRUE	FALSE	FALSE	FALSE	TRUE	TRUE	dsDescription	citation	
+	dsDescriptionValue				textbox	17	#VALUE	TRUE	FALSE	FALSE	FALSE	TRUE	TRUE	dsDescription	citation	
 	dsDescriptionDate	Date	The date when the description was added to this Dataset. If this Dataset contains more than one description (e.g. the data producer supplied one description and the data repository prepared another), this date is used to distinguish between the descriptions.	YYYY-MM-DD	date	18	(#VALUE)	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	dsDescription	citation	
 	subject	Subject(s)	Area(s) of study that are relevant to this Dataset		text	19		TRUE	TRUE	TRUE	TRUE	TRUE	TRUE		citation	http://purl.org/dc/terms/subject
 	keyword	Keyword	Key term that describes important aspects of this Dataset		none	20		FALSE	FALSE	TRUE	FALSE	TRUE	FALSE		citation	
@@ -63,7 +63,7 @@
 	timePeriodCoveredStart	Start Date		YYYY-MM-DD	date	59	#NAME: #VALUE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	timePeriodCovered	citation	
 	timePeriodCoveredEnd	End Date		YYYY-MM-DD	date	60	#NAME: #VALUE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	timePeriodCovered	citation	
 	dateOfCollection	Date of Collection	The date(s) when the data were collected		none	61	;	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
-	dateOfCollectionStart	Start Date		YYYY-MM-DD	date	62	#NAME: #VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	dateOfCollection	citation	
+e	dateOfCollectionStart	Start Date		YYYY-MM-DD	date	62	#NAME: #VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	dateOfCollection	citation	
 	dateOfCollectionEnd	End Date		YYYY-MM-DD	date	63	#NAME: #VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	dateOfCollection	citation	
 	kindOfData	Data Type	Type of data included in the file (e.g. survey data, clinical data, machine-readable text)		text	64		TRUE	FALSE	TRUE	TRUE	FALSE	FALSE		citation	http://rdf-vocabulary.ddialliance.org/discovery#kindOfData
 	series	Series			none	65	:	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
