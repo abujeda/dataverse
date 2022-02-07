@@ -5,9 +5,9 @@
 	subtitle	Subtitle	A secondary title that amplifies or states certain limitations on the main title		text	1		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	alternativeTitle	Alternative Title	Either 1) a title commonly used to refer to this Dataset or 2) an abbreviation of the main title		text	2		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/alternative
 	alternativeURL	Alternative URL	"A URL where one can view another version of this Dataset, such as a project or personal webpage"	https://	url	3	"<a href=""#VALUE"" target=""_blank"">#VALUE</a>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	https://schema.org/distribution
-	otherId	Other Identifiers	Other unique identifiers for this Dataset (e.g. producer’s or another repository’s identifier)		none	4	:	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
+	otherId	Other Identifiers	Other unique identifiers for this Dataset (e.g. producer's or another repository's identifier)		none	4	:	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
 	otherIdAgency	Agency	The name of the agency that generated the other identifier		text	5	#VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	otherId	citation	
-	otherIdValue	Identifier	"When paired with the name of the agency, this number uniquely identifies this Dataset. When you fill in this field, you should also fill in the Agency field."		text	6	#VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	otherId	citation	
+	otherIdValue	Identifier	"When paired with the name of the agency, this identifier uniquely identifies this Dataset. When you fill in this field, you should also fill in the Agency field."		text	6	#VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	otherId	citation	
 	author	Authors	"The entities, such as people or organizations, that created this Dataset"		none	7		FALSE	FALSE	TRUE	FALSE	TRUE	TRUE		citation	http://purl.org/dc/terms/creator
 	authorName	Name	Either 1) an individual or 2) an organization	"1) Family Name, Given Name or 2) Organization XYZ"	text	8	#VALUE	TRUE	FALSE	FALSE	TRUE	TRUE	TRUE	author	citation	
 	authorAffiliation	Affiliation	The organization affiliated with the author	Organization XYZ	text	9	(#VALUE)	TRUE	FALSE	FALSE	TRUE	TRUE	FALSE	author	citation	
@@ -33,7 +33,7 @@
 	publicationCitation	Citation	The full bibliographic citation for this related publication		textbox	29	#VALUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	publication	citation	http://purl.org/dc/terms/bibliographicCitation
 	publicationIDType	Identifier Type	"The type of identifier (e.g. DOI). If you select an identifier type from this field, you should also fill in the Identifier Number field."		text	30	#VALUE: 	TRUE	TRUE	FALSE	FALSE	TRUE	FALSE	publication	citation	http://purl.org/spar/datacite/ResourceIdentifierScheme
 	publicationIDNumber	Identifier	"The identifier for the related publication. If you fill in this field, you should also select an identifier type from the Identifier Type field."		text	31	#VALUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	publication	citation	http://purl.org/spar/datacite/ResourceIdentifier
-	publicationURL	URL	"Either 1) the URL form of the idenrifier you entered in the Identifier Number field, e.g. a DOI URL; or, 2) the publication webpage, e.g. a journal article page"	https://	url	32	"<a href=""#VALUE"" target=""_blank"" rel=""noopener"">#VALUE</a>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	publication	citation	https://schema.org/distribution
+	publicationURL	URL	"Either 1) the URL form of the identifier you entered in the Identifier Number field, e.g. a DOI URL or 2) the publication webpage, e.g. a journal article page"	https://	url	32	"<a href=""#VALUE"" target=""_blank"" rel=""noopener"">#VALUE</a>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	publication	citation	https://schema.org/distribution
 	notesText	Notes	Additional information about this Dataset		textbox	33		FALSE	FALSE	FALSE	FALSE	TRUE	FALSE		citation	
 	language	Languages	The languages that this Dataset's files are written in		text	34		TRUE	TRUE	TRUE	TRUE	FALSE	FALSE		citation	http://purl.org/dc/terms/language
 	producer	Producers	"The entities, such as people or organizations, managing the finances or other administrative processes involved in the creation of this dataset"		none	35		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
@@ -53,19 +53,19 @@
 	distributor	Distributors	"The organizations designated to generate copies of this Dataset, including any editions or revisions"		none	49		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
 	distributorName	Name	Either 1) an individual or 2) an organization	"1) FamilyName, GivenName or 2) Organization"	text	50	#VALUE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	distributor	citation	
 	distributorAffiliation	Affiliation	The organization affiliated with the distributor	Organization XYZ	text	51	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
-	distributorAbbreviation	Abbreviation	"The abbreviation of this distributor (e.g. IQSS, ICPSR)"		text	52	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
+	distributorAbbreviation	Abbreviated Name	"The distributor's abbreviated name (e.g. IQSS, ICPSR)"		text	52	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributorURL	URL	The URL of the distributor's webpage	https://	url	53	"<a href=""#VALUE"" target=""_blank"" rel=""noopener"">#VALUE</a>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributorLogoURL	Logo URL	The URL of the distributor's logo. Use an https URL if possible.	https://	url	54	"<img src=""#VALUE"" alt=""#NAME"" class=""metadata-logo""/><br/>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributionDate	Distribution Date	The date when this Dataset was made available for distribution/presentation	YYYY-MM-DD	date	55		TRUE	FALSE	FALSE	TRUE	FALSE	FALSE		citation	
-	depositor	Depositor	"The entities, such as a person or organization, that deposited this Dataset in the repository"	"1) FamilyName, GivenName or 2) Organization"	text	56		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
+	depositor	Depositor	"The entity, such as a person or organization, that deposited this Dataset in the repository"	"1) FamilyName, GivenName or 2) Organization"	text	56		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	dateOfDeposit	Deposit Date	Either 1) an individual or 2) an organization that deposited this Dataset into the repository	YYYY-MM-DD	date	57		FALSE	FALSE	FALSE	TRUE	FALSE	FALSE		citation	http://purl.org/dc/terms/dateSubmitted
-	timePeriodCovered	Time Period	"The time period that the data refer to. Also known as span. This is the time period covered by the data, not the dates of coding, collecting data, or making documents machine-readable."		none	58	;	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	https://schema.org/temporalCoverage
+	timePeriodCovered	Time Periods	"The time period that the data refer to. Also known as span. This is the time period covered by the data, not the dates of coding, collecting data, or making documents machine-readable."		none	58	;	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	https://schema.org/temporalCoverage
 	timePeriodCoveredStart	Start Date	Start date of the time period that the data refer to.	YYYY-MM-DD	date	59	#NAME: #VALUE 	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	timePeriodCovered	citation	
 	timePeriodCoveredEnd	End Date	End date of the time period that the data refer to.	YYYY-MM-DD	date	60	#NAME: #VALUE 	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	timePeriodCovered	citation	
 	dateOfCollection	Dates of Collection	The dates when the data were collected or generated		none	61	;	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
 	dateOfCollectionStart	Start Date	Date when the data collection started	YYYY-MM-DD	date	62	#NAME: #VALUE 	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	dateOfCollection	citation	
 	dateOfCollectionEnd	End Date	Date when the data collection ended	YYYY-MM-DD	date	63	#NAME: #VALUE 	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	dateOfCollection	citation	
-	kindOfData	Data Type	"The type of data included in the file (e.g. survey data, clinical data, machine-readable text)"		text	64		TRUE	FALSE	TRUE	TRUE	FALSE	FALSE		citation	http://rdf-vocabulary.ddialliance.org/discovery#kindOfData
+	kindOfData	Data Types	"The types of data included in the file (e.g. survey data, clinical data, machine-readable text)"		text	64		TRUE	FALSE	TRUE	TRUE	FALSE	FALSE		citation	http://rdf-vocabulary.ddialliance.org/discovery#kindOfData
 	series	Series	Information about the dataset series to which this Dataset belong		none	65	:	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	seriesName	Name	The name of the dataset series		text	66	#VALUE	TRUE	FALSE	FALSE	TRUE	FALSE	FALSE	series	citation	
 	seriesInformation	Information	Can include 1) history of the series and 2) summary of features that apply to the series		textbox	67	#VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	series	citation	
@@ -73,9 +73,9 @@
 	softwareName	Name	The name of software used to generate this Dataset		text	69	#VALUE	FALSE	TRUE	FALSE	FALSE	FALSE	FALSE	software	citation	
 	softwareVersion	Version	"The version of the software used to generate this Dataset, e.g. 4.11"		text	70	#NAME: #VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	software	citation	
 	relatedMaterial	Related Material	"Material related to this Dataset, such as appendices or sampling information available outside of this Dataset. Include a persistent ID or citation when possible."		textbox	71		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
-	relatedDatasets	Related Datasets	"Dataset related to this Dataset, such as previous research on this subject. Include a persistent ID or citation when possible."		textbox	72		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/relation
-	otherReferences	Other References	Any reference that provides background or supporting material to this Dataset. Include a persistent ID or citation when possible.		text	73		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/references
-	dataSources	Data Sources	"Source of this Dataset (e.g. a book, article, serial, or machine-readable data file). Include a persistent ID or citation when possible."		textbox	74		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	https://www.w3.org/TR/prov-o/#wasDerivedFrom
+	relatedDatasets	Related Datasets	"Datasets related to this Dataset, such as previous research on this subject. Include a persistent ID or citation when possible."		textbox	72		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/relation
+	otherReferences	Other References	Any references that provide background or supporting material to this Dataset. Include a persistent ID or citation when possible.		text	73		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/references
+	dataSources	Data Sources	"Sources of this Dataset (e.g. a book, article, serial, or machine-readable data file). Include a persistent ID or citation when possible."		textbox	74		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	https://www.w3.org/TR/prov-o/#wasDerivedFrom
 	originOfSources	Origin of Historical Sources	"For historical sources, the origin and any rules followed in establishing them as sources"		textbox	75		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	characteristicOfSources	Characteristics of Sources	Characteristics not already noted elsewhere		textbox	76		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	accessToSources	Documentation and Access to Sources	1) Methods or procedures for accessing data sources and 2) any special permissions needed for access		textbox	77		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
