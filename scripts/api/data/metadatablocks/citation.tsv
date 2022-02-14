@@ -10,12 +10,12 @@
 	otherIdValue	Identifier	"When paired with the name of the agency, this identifier uniquely identifies this Dataset. When you fill in this field, you should also fill in the Agency field."		text	6	#VALUE	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	otherId	citation	
 	author	Author	"The entity, e.g. a person or organization, that created this Dataset"		none	7		FALSE	FALSE	TRUE	FALSE	TRUE	TRUE		citation	http://purl.org/dc/terms/creator
 	authorName	Name	"The name of the entity, such as the person's name or the name of an organization"	"1) Family Name, Given Name or 2) Organization XYZ"	text	8	#VALUE	TRUE	FALSE	FALSE	TRUE	TRUE	TRUE	author	citation	
-	authorAffiliation	Affiliation	The organization affiliated with the author	Organization XYZ	text	9	(#VALUE)	TRUE	FALSE	FALSE	TRUE	TRUE	FALSE	author	citation	
+	authorAffiliation	Affiliation	The name of the entity affiliated with the author, e.g. an organization's name	Organization XYZ	text	9	(#VALUE)	TRUE	FALSE	FALSE	TRUE	TRUE	FALSE	author	citation	
 	authorIdentifierScheme	Identifier Type	"The type of author identifier (e.g. ORCID, ISNI). If you fill in this field, you should also fill in the Identifier field."		text	10	- #VALUE:	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	author	citation	http://purl.org/spar/datacite/AgentIdentifierScheme
 	authorIdentifier	Identifier	"Uniquely identifies the author. When you fill in this field, you should also select from the Identifier Type field."		text	11	#VALUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	author	citation	http://purl.org/spar/datacite/AgentIdentifier
 	datasetContact	Point of Contact	"The entity, e.g. as a person or organization, that users of this Dataset can contact with questions"		none	12		FALSE	FALSE	TRUE	FALSE	TRUE	TRUE		citation	
 	datasetContactName	Name	"The name of the entity, e.g. the person's name or the name of an organization"	"1) FamilyName, GivenName or 2) Organization"	text	13	#VALUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	datasetContact	citation	
-	datasetContactAffiliation	Affiliation	The organization affiliated with the contact	Organization XYZ	text	14	(#VALUE)	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	datasetContact	citation	
+	datasetContactAffiliation	Affiliation	The name of the entity affiliated with the contact, e.g. an organization's name	Organization XYZ	text	14	(#VALUE)	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	datasetContact	citation	
 	datasetContactEmail	E-mail	The contact's email address. This will not be displayed on this Dataset's page.	name@email.xyz	email	15	#EMAIL	FALSE	FALSE	FALSE	FALSE	TRUE	TRUE	datasetContact	citation	
 	dsDescription	Description	"A summary describing the purpose, nature, and scope of the Dataset"		none	16		FALSE	FALSE	TRUE	FALSE	TRUE	TRUE		citation	
 	dsDescriptionValue	Text	"A summary describing the purpose, nature, and scope of the Dataset"		textbox	17	#VALUE	TRUE	FALSE	FALSE	FALSE	TRUE	TRUE	dsDescription	citation	
@@ -38,10 +38,10 @@
 	language	Language	A language that this Dataset's files is written in		text	34		TRUE	TRUE	TRUE	TRUE	FALSE	FALSE		citation	http://purl.org/dc/terms/language
 	producer	Producer	"The entity, such a person or organization, managing the finances or other administrative processes involved in the creation of this dataset"		none	35		FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	
 	producerName	Name	"The name of the entity, e.g. the person's name or the name of an organization"	"1) FamilyName, GivenName or 2) Organization"	text	36	#VALUE	TRUE	FALSE	FALSE	TRUE	FALSE	TRUE	producer	citation	
-	producerAffiliation	Affiliation	The organization affiliated with the producer	Organization XYZ	text	37	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
+	producerAffiliation	Affiliation	The name of the entity affiliated with the producer, e.g. an organization's name	Organization XYZ	text	37	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
 	producerAbbreviation	Abbreviated Name	"The producer's abbreviated name (e.g. IQSS, ICPSR)"		text	38	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
 	producerURL	URL	The URL of the producer's website	https://	url	39	<a href=""#VALUE"" target=""_blank"" rel=""noopener"">#VALUE</a>	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
-	producerLogoURL	Logo URL	The URL of the producer's logo. Use an https URL if possible.	https://	url	40	"<img src=""#VALUE"" alt=""#NAME"" class=""metadata-logo""/><br/>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
+	producerLogoURL	Logo URL	The URL of the producer's logo. Use an https URL if possible.	https://	url	40	<img src=""#VALUE"" alt=""#NAME"" class=""metadata-logo""/><br/>	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	producer	citation	
 	productionDate	Production Date	"The date when the data were produced (not distributed, published, or archived)"	YYYY-MM-DD	date	41		TRUE	FALSE	FALSE	TRUE	FALSE	FALSE		citation	
 	productionPlace	Production Location	The location where the data and any related materials were produced or collected		text	42		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	contributor	Contributor	"The entity, such as a person or organization, responsible for collecting, managing, or otherwise contributing to the development of this Dataset"		none	43	:	FALSE	FALSE	TRUE	FALSE	FALSE	FALSE		citation	http://purl.org/dc/terms/contributor
@@ -55,7 +55,7 @@
 	distributorAffiliation	Affiliation	"The name of the entity affiliated with the distributor, e.g. an organization's name"	Organization XYZ	text	51	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributorAbbreviation	Abbreviated Name	"The distributor's abbreviated name (e.g. IQSS, ICPSR)"		text	52	(#VALUE)	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributorURL	URL	The URL of the distributor's webpage	https://	url	53	<a href=""#VALUE"" target=""_blank"" rel=""noopener"">#VALUE</a>	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
-	distributorLogoURL	Logo URL	The URL of the distributor's logo. Use an https URL if possible.	https://	url	54	"<img src=""#VALUE"" alt=""#NAME"" class=""metadata-logo""/><br/>"	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
+	distributorLogoURL	Logo URL	The URL of the distributor's logo. Use an https URL if possible.	https://	url	54	<img src=""#VALUE"" alt=""#NAME"" class=""metadata-logo""/><br/>	FALSE	FALSE	FALSE	FALSE	FALSE	FALSE	distributor	citation	
 	distributionDate	Distribution Date	The date when this Dataset was made available for distribution/presentation	YYYY-MM-DD	date	55		TRUE	FALSE	FALSE	TRUE	FALSE	FALSE		citation	
 	depositor	Depositor	"The entity, such as a person or organization, that deposited this Dataset in the repository"	"1) FamilyName, GivenName or 2) Organization"	text	56		FALSE	FALSE	FALSE	FALSE	FALSE	FALSE		citation	
 	dateOfDeposit	Deposit Date	The date when this Dataset was deposited into the repository	YYYY-MM-DD	date	57		FALSE	FALSE	FALSE	TRUE	FALSE	FALSE		citation	http://purl.org/dc/terms/dateSubmitted
