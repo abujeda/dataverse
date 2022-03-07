@@ -462,6 +462,10 @@ public class Dataset extends DvObjectContainer {
         if (!ret.contains(BundleUtil.getStringFromBundle("dataset.category.code"))) {
             ret.add(BundleUtil.getStringFromBundle("dataset.category.code"));
         }
+        if (!ret.contains("Workflow")) {
+            ret.add("Workflow");
+        }
+
 
         return ret;
     }
