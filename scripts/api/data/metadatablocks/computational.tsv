@@ -1,0 +1,10 @@
+#metadataBlock	name	dataverseAlias   displayName													
+	computational		Computational Workflow
+#datasetField	name	title	description	watermark	 fieldType	displayOrder	displayFormat	advancedSearchField	allowControlledVocabulary	allowmultiples	facetable	displayoncreate	required	parent	metadatablock_id	termURI
+	workflowType	Computational Workflow Type	A workflow that covers computational / data-driven workflows. They are designed to compose and execute a series of computational or data manipulation steps in a scientific application.		text	0		FALSE	TRUE	FALSE	TRUE	TRUE	FALSE		computational
+#controlledVocabulary	DatasetField	Value	identifier	displayOrder
+	workflowType	CWL	workflowtype_cwl	1
+	workflowType	Jupyter	workflowtype_jupyter	2
+	workflowType	RStudio	workflowtype_rstudio	3
+	workflowType	Makefile	workflowtype_makefile	4
+	workflowType	Other	workflowtype_other	100

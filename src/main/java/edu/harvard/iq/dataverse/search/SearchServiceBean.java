@@ -8,6 +8,7 @@ import edu.harvard.iq.dataverse.DatasetVersionServiceBean;
 import edu.harvard.iq.dataverse.Dataverse;
 import edu.harvard.iq.dataverse.DataverseFacet;
 import edu.harvard.iq.dataverse.DvObjectServiceBean;
+import edu.harvard.iq.dataverse.MetadataBlock;
 import edu.harvard.iq.dataverse.authorization.groups.Group;
 import edu.harvard.iq.dataverse.authorization.groups.GroupServiceBean;
 import edu.harvard.iq.dataverse.authorization.users.AuthenticatedUser;
@@ -26,13 +27,16 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.MissingResourceException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
@@ -207,6 +211,7 @@ public class SearchServiceBean {
         // -----------------------------------
         // Facets to Retrieve
         // -----------------------------------
+        solrQuery.addFacetField(SearchFields.METADATA_TYPES);
 //        solrQuery.addFacetField(SearchFields.HOST_DATAVERSE);
 //        solrQuery.addFacetField(SearchFields.AUTHOR_STRING);
         solrQuery.addFacetField(SearchFields.DATAVERSE_CATEGORY);
@@ -229,6 +234,7 @@ public class SearchServiceBean {
          *
          */
 
+        Set<MetadataBlock> metadataBlockFacets = new LinkedHashSet<>();
         //I'm not sure if just adding null here is good for hte permissions system... i think it needs something
         if(dataverses != null) {
             for(Dataverse dataverse : dataverses) {
@@ -244,6 +250,8 @@ public class SearchServiceBean {
                         DatasetFieldType datasetField = dataverseFacet.getDatasetFieldType();
                         solrQuery.addFacetField(datasetField.getSolrField().getNameFacetable());
                     }
+                    // Get all metadata block facets configured to be displayed
+                    metadataBlockFacets.addAll(dataverse.getMetadataBlockFacets().stream().map(metadataBlockFacet -> metadataBlockFacet.getMetadataBlock()).collect(Collectors.toList()));
                 }
             }
         } else {
@@ -627,7 +635,15 @@ public class SearchServiceBean {
                 if (facetFieldCount.getCount() > 0) {
                    if(metadataBlockName.length() > 0 ) {
                        localefriendlyName = getLocaleTitle(datasetFieldName,facetFieldCount.getName(), metadataBlockName);
-                    } else {
+                    } else if (facetField.getName().equals(SearchFields.METADATA_TYPES)) {
+                       Optional<MetadataBlock> metadataBlock = metadataBlockFacets.stream().filter(block -> block.getName().equals(facetFieldCount.getName())).findFirst();
+                       if (metadataBlock.isEmpty()) {
+                           // metadata block is not configured to be displayed => ignore
+                           continue;
+                       }
+
+                       localefriendlyName = metadataBlock.get().getLocaleDisplayName();
+                   } else {
                        try {
                            localefriendlyName = BundleUtil.getStringFromPropertyFile(facetFieldCount.getName(), "Bundle");
                        } catch (Exception e) {
@@ -749,7 +765,7 @@ public class SearchServiceBean {
                 // to avoid overlapping dates
                 end = end - 1;
                 if (rangeFacetCount.getCount() > 0) {
-                    FacetLabel facetLabel = new FacetLabel(start + "-" + end, new Long(rangeFacetCount.getCount()));
+                    FacetLabel facetLabel = new FacetLabel(start + "-" + end, Long.valueOf(rangeFacetCount.getCount()));
                     // special [12 TO 34] syntax for range facets
                     facetLabel.setFilterQuery(rangeFacet.getName() + ":" + "[" + start + " TO " + end + "]");
                     facetLabelList.add(facetLabel);

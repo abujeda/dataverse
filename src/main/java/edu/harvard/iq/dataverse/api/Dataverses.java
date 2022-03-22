@@ -7,6 +7,7 @@ import edu.harvard.iq.dataverse.DatasetVersion;
 import edu.harvard.iq.dataverse.Dataverse;
 import edu.harvard.iq.dataverse.DataverseFacet;
 import edu.harvard.iq.dataverse.DataverseContact;
+import edu.harvard.iq.dataverse.DataverseMetadataBlockFacet;
 import edu.harvard.iq.dataverse.DataverseServiceBean;
 import edu.harvard.iq.dataverse.api.datadeposit.SwordServiceBean;
 import edu.harvard.iq.dataverse.authorization.DataverseRole;
@@ -686,6 +687,37 @@ public class Dataverses extends AbstractApiBean {
             // by passing null for Featured Dataverses and DataverseFieldTypeInputLevel, those are not changed
             execCommand(new UpdateDataverseCommand(dataverse, facets, null, createDataverseRequest(findUserOrDie()), null));
             return ok("Facets of dataverse " + dvIdtf + " updated.");
+
+        } catch (WrappedResponse ex) {
+            return ex.getResponse();
+        }
+    }
+
+    @POST
+    @Path("{identifier}/metadatablockfacets")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response setMetadataBlockFacets(@PathParam("identifier") String dvIdtf, List<String> metadataBlockNames) {
+        try {
+            Dataverse dataverse = findDataverseOrDie(dvIdtf);
+
+            List<DataverseMetadataBlockFacet> metadataBlockFacets = new LinkedList<>();
+            int displayOrder = 0;
+            for(String metadataBlockName: metadataBlockNames) {
+                MetadataBlock metadataBlock = findMetadataBlock(metadataBlockName);
+                if (metadataBlock == null) {
+                    return error(Response.Status.BAD_REQUEST, String.format("Invalid metadata block name: %s", metadataBlockName));
+                }
+
+                DataverseMetadataBlockFacet metadataBlockFacet = new DataverseMetadataBlockFacet();
+                metadataBlockFacet.setDataverse(dataverse);
+                metadataBlockFacet.setMetadataBlock(metadataBlock);
+                metadataBlockFacet.setDisplayOrder(displayOrder++);
+                metadataBlockFacets.add(metadataBlockFacet);
+            }
+
+            dataverse.setMetadataBlockFacets(metadataBlockFacets);
+            execCommand(new UpdateDataverseCommand(dataverse, null, null, createDataverseRequest(findUserOrDie()), null));
+            return ok(String.format("Metadata block facets updated. DataverseId: %s blocks: %s", dvIdtf, metadataBlockNames));
 
         } catch (WrappedResponse ex) {
             return ex.getResponse();

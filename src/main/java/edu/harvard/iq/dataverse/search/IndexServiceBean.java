@@ -806,6 +806,7 @@ public class IndexServiceBean {
             }
 
             Map<Long, JsonObject> cvocMap = datasetFieldService.getCVocConf(false);
+            Set<String> metadataBlocksWithValue = new HashSet<>();
             for (DatasetField dsf : datasetVersion.getFlatDatasetFields()) {
 
                 DatasetFieldType dsfType = dsf.getDatasetFieldType();
@@ -813,6 +814,9 @@ public class IndexServiceBean {
                 String solrFieldFacetable = dsfType.getSolrField().getNameFacetable();
 
                 if (dsf.getValues() != null && !dsf.getValues().isEmpty() && dsf.getValues().get(0) != null && solrFieldSearchable != null) {
+                    // Index all metadata blocks that have a value - in case the Metadata type facet is shown
+                    metadataBlocksWithValue.add(dsfType.getMetadataBlock().getName());
+
                     logger.fine("indexing " + dsf.getDatasetFieldType().getName() + ":" + dsf.getValues() + " into " + solrFieldSearchable + " and maybe " + solrFieldFacetable);
                     // if (dsfType.getSolrField().getSolrType().equals(SolrField.SolrType.INTEGER))
                     // {
@@ -921,6 +925,10 @@ public class IndexServiceBean {
                         }
                     }
                 }
+            }
+
+            for(String metadataBlockName : metadataBlocksWithValue) {
+                solrInputDocument.addField(SearchFields.METADATA_TYPES, metadataBlockName);
             }
         }
         

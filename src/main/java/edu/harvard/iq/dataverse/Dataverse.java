@@ -322,8 +322,23 @@ public class Dataverse extends DvObjectContainer {
         return harvestingClient != null; 
     }
     */
-    
-    
+
+    @OneToMany(mappedBy = "dataverse",cascade={ CascadeType.REMOVE, CascadeType.MERGE,CascadeType.PERSIST}, orphanRemoval=true)
+    @OrderBy("displayOrder")
+    private List<DataverseMetadataBlockFacet> metadataBlockFacets = new ArrayList<>();
+
+    public List<DataverseMetadataBlockFacet> getMetadataBlockFacets() {
+        if (metadataBlockRoot || getOwner() == null) {
+            return metadataBlockFacets;
+        } else {
+            return getOwner().getMetadataBlockFacets();
+        }
+    }
+
+    public void setMetadataBlockFacets(List<DataverseMetadataBlockFacet> metadataBlockFacets) {
+        this.metadataBlockFacets = metadataBlockFacets;
+    }
+
     public List<Guestbook> getParentGuestbooks() {
         List<Guestbook> retList = new ArrayList<>();
         Dataverse testDV = this;
