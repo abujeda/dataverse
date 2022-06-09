@@ -118,8 +118,7 @@ public class BagValidator {
                 FileChecksumValidationJob validationJob = new FileChecksumValidationJob(inputStreamProvider.get(), filePath, fileChecksum, manifestChecksums.getType(), fileValidationResult);
                 executor.execute(validationJob);
             } else {
-                fileValidationResult.setError();
-                fileValidationResult.setMessage(getMessage("bagit.validation.file.not.found", filePath, fileDataProvider.getName()));
+                fileValidationResult.setError(getMessage("bagit.validation.file.not.found", filePath, fileDataProvider.getName()));
             }
 
         }

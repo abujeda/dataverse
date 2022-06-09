@@ -93,7 +93,8 @@ public class BagValidatorTest {
 
         MatcherAssert.assertThat(result.success(), Matchers.is(false));
         MatcherAssert.assertThat(result.getErrorMessage().isEmpty(), Matchers.is(false));
-        MatcherAssert.assertThat(result.getErrorMessage().get(), Matchers.containsString("Invalid bag file"));
+        MatcherAssert.assertThat(result.getErrorMessage().get(), Matchers.containsString("Invalid BagIt package"));
+        MatcherAssert.assertThat(result.getErrorMessage().get(), Matchers.containsString(fileDataProvider.getName()));
 
         Mockito.verifyZeroInteractions(manifestReader);
     }
@@ -139,7 +140,8 @@ public class BagValidatorTest {
         MatcherAssert.assertThat(result.getFileResults().size(), Matchers.is(checksums.getFileChecksums().size()));
         for(Path filePath: checksums.getFileChecksums().keySet()) {
             MatcherAssert.assertThat(result.getFileResults().get(filePath).isError(), Matchers.is(true));
-            MatcherAssert.assertThat(result.getFileResults().get(filePath).getMessage(), Matchers.containsString("Manifest declared file"));
+            MatcherAssert.assertThat(result.getFileResults().get(filePath).getMessage(), Matchers.containsString("manifest declared a file"));
+            MatcherAssert.assertThat(result.getFileResults().get(filePath).getMessage(), Matchers.containsString(filePath.toString()));
         }
 
         Mockito.verify(manifestReader).getManifestChecksums(fileDataProvider, expectedBagRoot);
